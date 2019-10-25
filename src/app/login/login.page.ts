@@ -21,11 +21,12 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    // console.log(this.user);
+    
     this._us.ingresar(this.user)
           .subscribe(()=>{ 
               if(this._us.status == 'success'){
-                this.router.navigate(['home']);
+                this.router.navigate(['tabs']);
+                this.user = new User(1,'ROLE_USER','','','','');
               }
           });
 

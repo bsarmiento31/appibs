@@ -1,0 +1,40 @@
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ usuarios.nombre }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+    <div class="logo-section">
+        <div class="logo-section__wrapper">
+          <img class="logo-section__logo" src="assets/img/logo.png" />
+        </div>
+    </div>
+
+    <div class="center">
+        <h3>{{ usuarios.nombre }} {{ usuarios.apellido }}</h3>
+        <h4>{{ usuarios.role }}</h4>
+        <p>{{ usuarios.email }}</p>
+    </div>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col></ion-col>
+            <ion-col class="ion-text-center">
+                <ion-button icon-only color="primary" class="rounded">
+                    <ion-icon  name="create"></ion-icon>
+                </ion-button>  
+            </ion-col>
+            <ion-col class="ion-text-center">
+                <ion-button icon-only color="danger" class="rounded">
+                    <ion-icon  name="close"></ion-icon>
+                </ion-button>  
+            </ion-col>
+            <ion-col></ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content> 

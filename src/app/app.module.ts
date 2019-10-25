@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
+// import { LoginPageModule } from './login/login.module';
+import { RegistroUsuariosPageModule } from './registro-usuarios/registro-usuarios.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +22,8 @@ import { HttpClient,HttpClientModule } from '@angular/common/http';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    RegistroUsuariosPageModule,
+    IonicStorageModule.forRoot(),
     HttpClientModule],
   providers: [
     StatusBar,

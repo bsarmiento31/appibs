@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor( private _us:UsuariosService ) {}
 
 }

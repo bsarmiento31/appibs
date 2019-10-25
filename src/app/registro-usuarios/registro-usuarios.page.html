@@ -1,0 +1,54 @@
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Crear Usuario</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrar_modal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+    <form #registerForm="ngForm" (ngSubmit)="registrar(registerForm)" class="form-content ion-padding">
+        
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required></ion-input>
+              </ion-item>
+        
+        
+            <ion-item>
+                <ion-label position="floating">Apellido</ion-label>
+                <ion-input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="user.apellido" required></ion-input>
+              </ion-item>
+        
+
+              <ion-item>
+                  <ion-label>Role</ion-label>
+                  <ion-select interface="popover" name="role" #role="ngModel" [(ngModel)]="user.role" >
+                    <ion-select-option value="Admin">Admin</ion-select-option>
+                    <ion-select-option value="Jefe">Jefe</ion-select-option>
+                    <ion-select-option value="Operario">Operario</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Contraseña</ion-label>
+                    <ion-input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required></ion-input>
+                </ion-item>
+
+                <!-- <ion-item>
+                    <ion-label position="floating">Confirmar Contraseña</ion-label>
+                    <ion-input type="password"></ion-input>
+                </ion-item> -->
+                <br>
+                <ion-button expand="block" type="submit" value="registrarme"  fill="outline" [disabled]="!registerForm.form.valid">Registrar</ion-button>
+
+    </form>
+
+</ion-content>

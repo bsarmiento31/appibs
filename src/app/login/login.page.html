@@ -11,8 +11,10 @@
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="wrap-input100 m-b-23">
           <ion-item>           
-              <ion-label position="floating" class="pegar-texto" class="text-primary"><ion-icon name="eye" slot="start" class="text-primary"></ion-icon> Usuario</ion-label>
-              <ion-input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required></ion-input>
+              <ion-label position="floating" class="pegar-texto" class="text-primary">
+                <ion-icon name="mail" slot="start" class="text-primary"></ion-icon> 
+                  Email</ion-label>
+              <ion-input type="email" name="email" #email="ngModel" [(ngModel)]="user.email"></ion-input>
               
           </ion-item>
 
@@ -20,13 +22,19 @@
       
       <div class="wrap-input100 m-b-23">
           <ion-item>           
-              <ion-label position="floating" class="pegar-texto" class="text-primary"><ion-icon name="eye" slot="start" class="text-primary"></ion-icon> Contraseña</ion-label>
-              <ion-input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required></ion-input>
+              <ion-label position="floating" class="pegar-texto" class="text-primary">
+                <ion-icon name="lock" slot="start" class="text-primary"></ion-icon> 
+                Contraseña
+              </ion-label>
+              <ion-input type="password" name="password" #password="ngModel" [(ngModel)]="user.password"></ion-input>
           </ion-item>
       </div>
       <p class="password">Olvidé mi contraseña</p>
       <br>
-     <ion-button type="submit" value="entrar" expand="block" [disabled]="!loginForm.form.valid">Ingresar</ion-button>
+     <ion-button type="submit" value="entrar" expand="block" [disabled]="!loginForm.form.valid">
+        <ion-icon name="log-in"></ion-icon>
+        Ingresar
+      </ion-button>
       </form>
       </div> 
      
