@@ -1,0 +1,45 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Editar Usuario</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar_modal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #editarForm="ngForm" (ngSubmit)="editarUsuario(editarForm)" class="form-content ion-padding">
+
+    
+      <ion-item style="display: none;">
+          <ion-label position="floating">id</ion-label>
+          <ion-input type="text" name="id" #id="ngModel" [(ngModel)]="usuarios.id" required></ion-input>
+        </ion-item>
+        
+    <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuarios.nombre" required></ion-input>
+      </ion-item>
+
+
+
+    <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="usuarios.apellido" required></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+          <ion-label>Role</ion-label>
+          <ion-select interface="popover" name="role" #role="ngModel" [(ngModel)]="usuarios.role" >
+            <ion-select-option value="Admin">Admin</ion-select-option>
+            <ion-select-option value="Jefe">Jefe</ion-select-option>
+            <ion-select-option value="Operario">Operario</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <br>
+        <ion-button expand="block" type="submit" value="registrarme"  fill="outline" [disabled]="!editarForm.form.valid">Editar</ion-button>
+
+</form>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header translucent>
+    <ion-toolbar> 
+      <ion-title>Crear Equipos</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrar_modal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+ 
+<ion-content>
+    <form #registerEquipoForm="ngForm" (ngSubmit)="registrar_equipo(registerEquipoForm)" class="form-content ion-padding">
+        
+        <ion-item>
+            <ion-label>Usuario</ion-label>
+            <ion-select interface="popover" name="role" #role="ngModel" [(ngModel)]="equipo.id_usuario" >
+              <ion-select-option value="1">brayan</ion-select-option>
+              <ion-select-option value="1">ala</ion-select-option>
+              <ion-select-option value="1">ss</ion-select-option>
+            </ion-select>
+          </ion-item>
+    
+    
+        <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="equipo.nombre" required></ion-input>
+          </ion-item>
+  
+
+            <ion-item>
+                <ion-label position="floating">Codigo</ion-label>
+                <ion-input type="text" name="codigo" #codigo="ngModel" [(ngModel)]="equipo.codigo" required></ion-input>
+            </ion-item>
+            <br>
+            <ion-button expand="block" type="submit" value="registrar"  fill="outline" [disabled]="!registerEquipoForm.form.valid">Registrar</ion-button>
+
+</form>
+</ion-content>

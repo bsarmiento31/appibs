@@ -13,6 +13,8 @@ import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 // import { LoginPageModule } from './login/login.module';
 import { RegistroUsuariosPageModule } from './registro-usuarios/registro-usuarios.module';
+import { EditUsersPageModule } from './edit-users/edit-users.module';
+import { RegistrarEquiposPageModule } from './registrar-equipos/registrar-equipos.module';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { RegistroUsuariosPageModule } from './registro-usuarios/registro-usuario
     IonicModule.forRoot(), 
     AppRoutingModule,
     RegistroUsuariosPageModule,
+    EditUsersPageModule,
+    RegistrarEquiposPageModule,
     IonicStorageModule.forRoot(),
     HttpClientModule],
   providers: [

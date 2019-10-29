@@ -10,15 +10,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuariosService {
-  token:string;
+  token:string; 
   status:string;
   usuarios:any[] = [];
+  ids:string;
 
   constructor(public _http: HttpClient,
               private alertController: AlertController,
               public loadingCtrl: LoadingController,
               private platform: Platform,
-              private storage: Storage) {
+              public storage: Storage) {
 
                 this.cargar_storage();
                 this.todos_usuarios();
@@ -56,6 +57,31 @@ export class UsuariosService {
   );
   }
 
+  
+
+
+  editar_usuario( token,user,id ){
+    let json = JSON.stringify(user);
+		let params = 'json='+json;
+    let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded').set('Authorization',token);
+    let url = URL_SERVICIOS + "/usuarios/"+id; 
+
+    return this._http.put( url,params,{headers:headers} )
+        .pipe(
+          map((resp:any)=>{
+            // console.log(resp);
+                
+            if( resp.status == 'success' ){
+                this.status = 'success'
+            }else{
+              this.status = 'error';
+            }
+
+          })
+        )
+  }
+
+  //Registrar Usuario
   registrar(user){
     let json = JSON.stringify(user);
 		let params = 'json='+json;
@@ -121,6 +147,75 @@ export class UsuariosService {
     return promesa;
       
   
+  }
+
+  //Eliminar alert
+  async eliminar_alert() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  borrar_usuario(id,token){
+    
+    let headers = new HttpHeaders().set('Authorization',token);
+    let url = URL_SERVICIOS + "/usuarios/"; 
+
+    return this._http.delete( url+id,{ headers:headers }) 
+    .pipe( 
+      map( (resp:any) => {
+          
+          if(resp.status == 'error'){
+                this.status = 'error';
+          }else{
+            
+            this.status = 'success';
+          }
+
+      })
+  );
+
+  }
+
+  //Traernos 1 usaurio
+  get_usuario(id){
+    let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+    let url = URL_SERVICIOS + "/usuarios/";
+    return this._http.get(url+id,{headers:headers})
+    .pipe( 
+      map( (resp:any) => {
+
+          console.log(resp);
+
+          if( resp.status == 'error' ){
+              this.status = 'error';
+          }else{
+            
+            this.ids = resp.usuario;
+            this.status = 'success';
+          }
+
+      })
+  );
+
   }
  
   public salir(){

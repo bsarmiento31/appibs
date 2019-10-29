@@ -5,22 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetallesUsersPage } from './detalles-users.page';
+import { EditUsersPage } from './edit-users.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DetallesUsersPage
+    component: EditUsersPage
   }
 ];
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DetallesUsersPage]
+  declarations: [EditUsersPage]
 })
-export class DetallesUsersPageModule {}
+export class EditUsersPageModule {}

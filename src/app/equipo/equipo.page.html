@@ -1,12 +1,33 @@
-<ion-header>
+<ion-header translucent>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
-      <ion-title>Equipo</ion-title>
+      <ion-title>Equipos</ion-title>
     </ion-toolbar>
   </ion-header>
 
 <ion-content>
+
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addEquipo()">  
+          <ion-icon name="add"></ion-icon> 
+        </ion-fab-button>
+      </ion-fab>
+  
+      <ion-list>
+          <ion-list-header>
+            Equipos
+          </ion-list-header>
+          <ion-item button>
+              <ion-icon slot="start" name="contact" style="color: #3880ff"></ion-icon>
+              <ion-label>
+                <h2>Usuario</h2>
+                <h4>Nombre</h4>
+                <p>Código</p>
+              </ion-label>
+            </ion-item>
+        </ion-list>
 
 </ion-content>

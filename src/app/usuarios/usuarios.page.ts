@@ -18,7 +18,7 @@ export class UsuariosPage implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 
   mostrar_detalles(usuario){
     this.usuarios = usuario;
@@ -29,7 +29,7 @@ export class UsuariosPage implements OnInit {
     }; 
     this.router.navigate(['detalles-users'], navigationExtras);
 
-    // this.router.navigate(['detalles-users']);
+ 
   }
 
 
@@ -40,8 +40,5 @@ export class UsuariosPage implements OnInit {
     return await modal.present();
   }
 
-  ver_usuario(){
-      
-  }
-
+  
 }

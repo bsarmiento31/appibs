@@ -12,12 +12,12 @@ import { Router, NavigationExtras } from '@angular/router';
 export class RegistroUsuariosPage implements OnInit {
 
   public user:User;
-
+ 
   constructor(public modalController: ModalController,
               public _us:UsuariosService,
               public router: Router,
-              public loadingCtrl: LoadingController,
-              private alertController: AlertController,
+              public loadingCtrl: LoadingController, 
+              private alertController: AlertController
               ) { 
     this.user = new User(1,'','','','','');
   }
@@ -30,7 +30,7 @@ export class RegistroUsuariosPage implements OnInit {
       'dismissed': true
     });
   }
-
+ 
   registrar( form ){
     this._us.registrar(this.user)
       .subscribe( ()=> {
@@ -38,7 +38,7 @@ export class RegistroUsuariosPage implements OnInit {
         if(this._us.status == 'success'){
           this.usuario_creado();
           this.cerrar_modal();
-          this.user = new User(1,'ROLE_USER','','','','');
+          this.user = new User(1,'','','','','');
           form.reset();
         }
 

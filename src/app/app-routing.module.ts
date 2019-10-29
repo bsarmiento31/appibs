@@ -9,6 +9,9 @@ const routes: Routes = [
   { path: 'usuarios', loadChildren: './usuarios/usuarios.module#UsuariosPageModule' },
   { path: 'detalles-users', loadChildren: './detalles-users/detalles-users.module#DetallesUsersPageModule' },
   { path: 'registro-usuarios', loadChildren: './registro-usuarios/registro-usuarios.module#RegistroUsuariosPageModule' },
+  { path: 'edit-users', loadChildren: './edit-users/edit-users.module#EditUsersPageModule' },
+  { path: 'registrar-equipos', loadChildren: './registrar-equipos/registrar-equipos.module#RegistrarEquiposPageModule' },
+  { path: 'editar-equipos', loadChildren: './editar-equipos/editar-equipos.module#EditarEquiposPageModule' },
 ];
 
 @NgModule({

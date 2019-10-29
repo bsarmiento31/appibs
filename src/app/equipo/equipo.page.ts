@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController, AlertController } from '@ionic/angular';
+import { RegistrarEquiposPage } from '../registrar-equipos/registrar-equipos.page';
 
 @Component({
   selector: 'app-equipo',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquipoPage implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController,
+              private alertController: AlertController) { }
 
   ngOnInit() {
+  }
+
+  async addEquipo() {
+    const modal = await this.modalController.create({
+      component: RegistrarEquiposPage
+    });
+    return await modal.present();
   }
 
 }
