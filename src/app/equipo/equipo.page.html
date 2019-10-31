@@ -1,11 +1,11 @@
-<ion-header translucent>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Equipos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start"> 
+      <ion-menu-button></ion-menu-button> 
+    </ion-buttons>
+    <ion-title>Equipos</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
@@ -15,19 +15,30 @@
           <ion-icon name="add"></ion-icon> 
         </ion-fab-button>
       </ion-fab>
+
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
   
-      <ion-list>
+      <ion-list> 
           <ion-list-header>
             Equipos
           </ion-list-header>
-          <ion-item button>
+          <ion-item button *ngFor="let equipo of _es.equipos">
               <ion-icon slot="start" name="contact" style="color: #3880ff"></ion-icon>
               <ion-label>
-                <h2>Usuario</h2>
-                <h4>Nombre</h4>
-                <p>Código</p>
+                <h2>{{ equipo.nombre }}</h2>
+                <h4>{{ equipo.codigo }}</h4> 
+                <p>{{ equipo.user.nombre }}</p>
               </ion-label>
             </ion-item>
         </ion-list>
+
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Cargando mas equipos...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
 
 </ion-content>

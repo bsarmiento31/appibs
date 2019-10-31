@@ -4,24 +4,26 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
+import { Equipo } from '../models/equipo';
 
 
 
-
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class EquiposService {
 
   token:string; 
   status:string;
-  equipos:any[] = [];
+  equipos:Equipo[] = [];
   ids:string;
+  // equipos: ArchivoSubir[]= [];
 
   constructor(public _http: HttpClient,
               private storage: Storage,
               private platform: Platform) { 
                 this.cargar_storage();
+                this.todos_equipos();
               }
 
   registrar(equipo){
@@ -37,8 +39,7 @@ export class EquiposService {
 
           if( resp.status == 'error' ){
               this.status = 'error';
-          }else{
-            
+          }else{            
             // this.usuario_creado();
             this.status = 'success';
             this.guardar_storage();
@@ -48,9 +49,54 @@ export class EquiposService {
   );
   }
 
+  //Mostrar Equipos
+
+    //Mostrar Usuarios
+    todos_equipos(){
+      let promesa = new Promise( (resolve,reject) =>{
+  
+        let url = URL_SERVICIOS + "/equipos";
+  
+        this._http.get( url )
+                  .subscribe( (data:any)=>{
+
+                    // data.pop();
+  
+                    if(data.length == 0){
+                      console.log('Ya no hay mas registros');
+                      resolve(false);
+                      return;
+                    }
+
+
+    
+                    if( data.error ){
+       
+                    }else{
+                      // console.log(data);
+  
+                      this.equipos.push( ...data.equipos);
+                  //     for( let i = data.length-1; i>= 0 ; i-- ){
+                  //       let post = data[i];
+                  //       this.equipos.push(...post);
+                  // }
+
+                  console.log(this.equipos);
+                    }
+                    resolve(false);
+    
+                  })
+  
+      });
+  
+      return promesa;
+        
+    
+    }
+ 
 
   private guardar_storage(){
-  
+   
     if( this.platform.is("cordova") ){
     
       //Dispositivo

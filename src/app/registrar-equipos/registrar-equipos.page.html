@@ -5,18 +5,17 @@
         <ion-button (click)="cerrar_modal()">Cerrar</ion-button>
       </ion-buttons>
     </ion-toolbar>
-  </ion-header>
-
+  </ion-header> 
+ 
  
 <ion-content>
     <form #registerEquipoForm="ngForm" (ngSubmit)="registrar_equipo(registerEquipoForm)" class="form-content ion-padding">
+
         
         <ion-item>
             <ion-label>Usuario</ion-label>
-            <ion-select interface="popover" name="role" #role="ngModel" [(ngModel)]="equipo.id_usuario" >
-              <ion-select-option value="1">brayan</ion-select-option>
-              <ion-select-option value="1">ala</ion-select-option>
-              <ion-select-option value="1">ss</ion-select-option>
+            <ion-select interface="popover" name="id_usuario_select" #role="ngModel" [(ngModel)]="equipo.id_usuario_select">
+              <ion-select-option value="{{ usuario.id }}" *ngFor="let usuario of _us.usuarios">{{ usuario.nombre }}</ion-select-option>
             </ion-select>
           </ion-item>
     
